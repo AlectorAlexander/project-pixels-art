@@ -1,0 +1,9 @@
+#color-palette {
+    display: flex;
+    flex-direction: row;
+}
+.color {
+    height: 80px;
+    width: 80px;
+    border: 1px solid black
+}
