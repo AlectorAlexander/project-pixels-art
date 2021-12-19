@@ -72,3 +72,15 @@ let selecionaDor = document.querySelector(".selected")
 let corDeFundo = window.getComputedStyle(selecionaDor).backgroundColor
 target.style.backgroundColor = corDeFundo
 }
+
+//Requisito9
+let clearBoard = document.getElementById("clear-board")
+clearBoard.addEventListener("click",limpar )
+function limpar (){
+    let pixelSujo = document.getElementsByClassName("pixel")
+    for (let pix = 0; pix < pixelSujo.length; pix++) {
+        const element = pixelSujo[pix];
+        element.style.backgroundColor = "white"
+        
+    }
+}
