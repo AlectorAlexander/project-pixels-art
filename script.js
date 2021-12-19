@@ -33,4 +33,42 @@ function grid (){
     }  
 }
 
+//Requisito 6
+let selected = document.getElementById("black")
+selected.className += " selected"
 
+//Requisito 7
+var colors = document.querySelectorAll(".color");
+for (let i = 0; i < colors.length; i++) {
+    colors[i].addEventListener("click", selecionarCor)   
+}
+
+function selecionarCor(qual) {
+
+    var colors = document.querySelectorAll(".color");
+
+    for (const key in colors) {
+        if (colors[key].className == "color selected") {
+            colors[key].classList.remove("selected")   
+        }
+    }
+
+   if (qual.target.className != "color selected"){
+       qual.target.className += " selected"
+   }
+
+}
+//Requisito 8
+
+let pixels =  document.querySelectorAll(".pixel")
+for (let pixel = 0; pixel < pixels.length; pixel++) {
+    const element = pixels[pixel];
+    element.addEventListener("click", mudaDeCor )
+}
+
+function mudaDeCor (qualfoi) {
+let target = qualfoi.target;
+let selecionaDor = document.querySelector(".selected")
+let corDeFundo = window.getComputedStyle(selecionaDor).backgroundColor
+target.style.backgroundColor = corDeFundo
+}
