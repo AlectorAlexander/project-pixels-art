@@ -17,21 +17,79 @@ function criadorDeDivs () {
 
 }
 //Requisito4
-let pixelBoard = document.getElementById("pixel-board");
-grid ()
-function grid (){
-    for (let quadrorizonte = 0; quadrorizonte < 5; quadrorizonte++) {
-        let pixel = document.createElement("div")
-        pixel.className = "pixel"
-        pixelBoard.appendChild(pixel)
-        for (let vertiquadro = 0; vertiquadro < 4; vertiquadro++) {
+//let pixelBoard = document.getElementById("pixel-board");
+//grid ()
+//function grid (){
+//    for (let quadrorizonte = 0; quadrorizonte < 5; quadrorizonte++) {
+//        let pixel = document.createElement("div")
+//        pixel.className = "pixel"
+//        pixelBoard.appendChild(pixel)
+//        for (let vertiquadro = 0; vertiquadro < 4; vertiquadro++) {
+//            let pixel = document.createElement("div")
+//            pixel.className = "pixel"
+//            pixelBoard.appendChild(pixel)
+//        }
+//        
+//    }  
+//}
+
+//Requisito10
+let boardSize = document.getElementById("board-size")
+boardSize.addEventListener("keyup", function (){ 
+    if (event.keyCode === 13){
+        
+       let colorPalette = document.querySelectorAll(".pixel")
+       for (let i = 0; i < colorPalette.length; i++) {
+        colorPalette[i].parentNode.removeChild(colorPalette[i])
+       }
+
+        tamanhoDoQuadrado()
+    }
+})
+
+let generateBoard = document.getElementById("generate-board")
+generateBoard.addEventListener("click", function () {
+let colorPalette = document.querySelectorAll(".pixel")
+       for (let i = 0; i < colorPalette.length; i++) {
+        colorPalette[i].parentNode.removeChild(colorPalette[i])
+ 
+       }
+       tamanhoDoQuadrado()
+    }
+       )
+
+tamanhoDoQuadrado()
+
+function tamanhoDoQuadrado (){
+    
+    let pixelBoard = document.getElementById("pixel-board");
+  
+
+     if (boardSize.value > 4 && boardSize.value < 51){
+        for (let quadrorizonte = 0; quadrorizonte < boardSize.value; quadrorizonte++) {
+            
             let pixel = document.createElement("div")
             pixel.className = "pixel"
             pixelBoard.appendChild(pixel)
-        }
+
+            for (let vertiquadro = 0; vertiquadro < boardSize.value - 1; vertiquadro++) {
+                let pixel = document.createElement("div")
+                pixel.className = "pixel"
+                pixelBoard.appendChild(pixel)
+            }
+            
+        }  
         
-    }  
+    let width = 40 + (40 * boardSize.value) + "px";
+    let height = (40 * boardSize.value) + "px";
+
+    pixelBoard.style.width = width
+    pixelBoard.style.height = height
+    definePixels()
+}else if (boardSize.value == ""){
+    alert("Board inválido!")
 }
+    }
 
 //Requisito 6
 let selected = document.getElementById("black")
@@ -59,15 +117,17 @@ function selecionarCor(qual) {
 
 }
 //Requisito 8
-
+definePixels()
+function definePixels(){
 let pixels =  document.querySelectorAll(".pixel")
 for (let pixel = 0; pixel < pixels.length; pixel++) {
     const element = pixels[pixel];
     element.addEventListener("click", mudaDeCor )
 }
-
+}
 function mudaDeCor (qualfoi) {
 let target = qualfoi.target;
+
 let selecionaDor = document.querySelector(".selected")
 let corDeFundo = window.getComputedStyle(selecionaDor).backgroundColor
 target.style.backgroundColor = corDeFundo
@@ -76,6 +136,7 @@ target.style.backgroundColor = corDeFundo
 //Requisito9
 let clearBoard = document.getElementById("clear-board")
 clearBoard.addEventListener("click",limpar )
+
 function limpar (){
     let pixelSujo = document.getElementsByClassName("pixel")
     for (let pix = 0; pix < pixelSujo.length; pix++) {
@@ -84,3 +145,4 @@ function limpar (){
         
     }
 }
+
