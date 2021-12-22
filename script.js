@@ -4,13 +4,24 @@ let colorPalette = document.getElementById("color-palette")
 let cores = ["black","yellow","orange","green" ]
 criadorDeDivs ()
 function criadorDeDivs () {
-    
+
     for (let cor = 0; cor < cores.length; cor++) {
+       //Referência: https://wallacemaxters.com.br/blog/2021/02/20/como-gerar-cores-aleatorias-no-javascript
+        let r = Math.random() * 255;
+        let g = Math.random() * 255;
+        let b = Math.random() * 255;
+       //Referência: https://wallacemaxters.com.br/blog/2021/02/20/como-gerar-cores-aleatorias-no-javascript
+
         const element = cores[cor];
         let divs = document.createElement("div")
         divs.className = "color"
-        divs.style.backgroundColor = element
+        if(cor == 0){
+            divs.style.backgroundColor = "black";
+        }else{
+        divs.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${1})`;
+    }
         divs.id = element
+        
         
         colorPalette.appendChild(divs)   
     }
