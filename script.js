@@ -61,7 +61,17 @@ let colorPalette = document.querySelectorAll(".pixel")
 tamanhoDoQuadrado()
 
 function tamanhoDoQuadrado (){
-    var valor = boardSize.value
+    var valor;
+    if (boardSize.value  == ""){
+        alert("Board inválido!")
+        valor = 5
+    }else if (boardSize.value < 5) {
+        valor = 5
+    } else if (boardSize.value > 50){
+        valor = 50
+    } else {
+    valor = boardSize.value
+}
     boardSize.value = ''
     let pixelBoard = document.getElementById("pixel-board");
   
@@ -87,8 +97,6 @@ function tamanhoDoQuadrado (){
     pixelBoard.style.width = width
     pixelBoard.style.height = height
     definePixels()
-}else if (valor == ""){
-    alert("Board inválido!")
 }
     }
 
