@@ -61,18 +61,19 @@ let colorPalette = document.querySelectorAll(".pixel")
 tamanhoDoQuadrado()
 
 function tamanhoDoQuadrado (){
-    
+    var valor = boardSize.value
+    boardSize.value = ''
     let pixelBoard = document.getElementById("pixel-board");
   
 
-     if (boardSize.value > 4 && boardSize.value < 51){
-        for (let quadrorizonte = 0; quadrorizonte < boardSize.value; quadrorizonte++) {
+     if (valor > 4 && valor < 51){
+        for (let quadrorizonte = 0; quadrorizonte < valor; quadrorizonte++) {
             
             let pixel = document.createElement("div")
             pixel.className = "pixel"
             pixelBoard.appendChild(pixel)
 
-            for (let vertiquadro = 0; vertiquadro < boardSize.value - 1; vertiquadro++) {
+            for (let vertiquadro = 0; vertiquadro < valor - 1; vertiquadro++) {
                 let pixel = document.createElement("div")
                 pixel.className = "pixel"
                 pixelBoard.appendChild(pixel)
@@ -80,13 +81,13 @@ function tamanhoDoQuadrado (){
             
         }  
         
-    let width = 40 + (40 * boardSize.value) + "px";
-    let height = (40 * boardSize.value) + "px";
+    let width = 40 + (40 * valor) + "px";
+    let height = (40 * valor) + "px";
 
     pixelBoard.style.width = width
     pixelBoard.style.height = height
     definePixels()
-}else if (boardSize.value == ""){
+}else if (valor == ""){
     alert("Board inválido!")
 }
     }
