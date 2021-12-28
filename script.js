@@ -1,7 +1,10 @@
 //Requisito2 e Requisito3
 
 let colorPalette = document.getElementById("color-palette")
-let cores = ["black","yellow","orange","green" ]
+let cores = ["black"]
+for (let nc = 0; nc < 15; nc++) {
+    cores.push(nc)   
+}
 criadorDeDivs ()
 function criadorDeDivs () {
 
