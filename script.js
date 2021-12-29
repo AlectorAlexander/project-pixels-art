@@ -2,7 +2,7 @@
 
 let colorPalette = document.getElementById("color-palette")
 let cores = ["black"]
-for (let nc = 0; nc < 15; nc++) {
+for (let nc = 0; nc < 3; nc++) {
     cores.push(nc)   
 }
 criadorDeDivs ()
@@ -106,7 +106,7 @@ function tamanhoDoQuadrado (){
         }  
         
     let width = 40 + (40 * valor) + "px";
-    let height = (40 * valor) + "px";
+    let height =(40 * valor) + "px";
 
     pixelBoard.style.width = width
     pixelBoard.style.height = height
